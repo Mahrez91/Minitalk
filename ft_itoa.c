@@ -30,10 +30,15 @@ char	*ft_strrev(char *str)
 	i = 0;
 	while (str[i] != '\0')
 		i++;
-	tmp = (char *)malloc(sizeof(char) * (i + 1));
+	tmp = (char *)malloc(sizeof(char) * (7));
 	if (tmp == NULL)
 		return (0);
 	i--;
+	while(i + y != 6)
+	{
+		tmp[y] = '0';
+		y++;
+	}
 	while (i >= 0)
 	{
 		tmp[y] = str[i];

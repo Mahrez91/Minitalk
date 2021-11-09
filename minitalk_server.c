@@ -1,28 +1,40 @@
 #include "minitalk.h"
 
+void	ft_putchar_fd(char c)
+{
+	write(1, &c, 1);
+}
+
+void    convert_binary(char *c)
+{
+    char *letter;
+    int i;
+    int ret = 13;
+
+    letter = ft_convert_base(c, "01", "0123456789");
+    i = ft_atoi(letter);
+    ft_putchar((char)i);
+}
+
 static void    handle_sigusr1(int s, siginfo_t *siginfo, void *context)
 {
     static char c[8];
     static int i = 0;
-    printf("sig = %d\n", siginfo->si_pid);
     if (s == SIGUSR1)
     {
         c[i] = '1';
-        printf("1\n");
-        kill(siginfo->si_pid, SIGUSR1);
     }
     else 
     {
         c[i] = '0';
-        printf("0\n");
-        kill(siginfo->si_pid, SIGUSR1);
     }
     i++;
-    if (i == 7)
+    if (i % 7 == 0)
     {
         i = 0;
-        printf("c = %s\n", c);
+        convert_binary(c);
     }
+    kill(siginfo->si_pid, SIGUSR1);
 }
 
 int main()

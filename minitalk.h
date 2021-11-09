@@ -22,5 +22,12 @@ int	ft_atoi(char *str);
 char	*ft_itoa(int n, int base);
 char	*ft_strcat(char *dest, char *src);
 char	**ft_split(char *s, char c);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+char	*ft_strchr(char *str, int c);
+int		ft_strlen(char *str);
+int		ft_check_error(char *base);
+int		ft_atoi_base(char *str, char *base);
+
+
 
 #endif 
